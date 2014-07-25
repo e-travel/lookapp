@@ -1,28 +1,24 @@
-== README
+== LookApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Instruction to setup the e-Travel dns lookup service
 
-Things you may want to cover:
+=== Requirements
 
-* Ruby version
+    * Ruby version: 2.1.x
+    * Bundler gem (http://bundler.io)
 
-* System dependencies
+=== Environment configuration
 
-* Configuration
+    * The environmental variable SECRET_KEY_BASE should be set with a big random value (use the same every time)
 
-* Database creation
+=== Application server
 
-* Database initialization
+    * run `bundle install` in the application folder to install gem dependencies
+    * compile assets with `bundle exec rake assets:precompile RAILS_ENV=production`
+    * run the server with `bundle exec rails server -e production`
 
-* How to run the test suite
+=== Web server
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    * run a web server to serve port 3000 externally
+    * to serve the application properly the web server should first try to find matching
+    static files in the `public` folder, else proxy to the application server

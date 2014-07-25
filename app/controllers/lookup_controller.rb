@@ -18,12 +18,13 @@ class LookupController < ApplicationController
     if params[:e_travel_host].present?
       dns = params[:e_travel_dns]
       cmd = "drill @#{dns} #{params[:e_travel_host]}"
-      output = `#{cmd}`
+      output = `#{cmd} 2>&1`
       exit_status = $?.exitstatus.to_i
 
       if exit_status == 0
         @dns_response = output
       else
+        Rails.logger.error output.strip
         flash.now[:error] = 'There was an error while performing the DNS lookup. Please check the logs or contact your system administrator.'
       end
     else
