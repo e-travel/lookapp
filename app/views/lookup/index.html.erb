@@ -10,12 +10,12 @@
             <div class="col-md-4">
             <%= form_tag(lookup_index_path, :method => 'post', :class => 'form-horizontal') do %>
                 <div class="form-group">
-                    <%= label_tag(:e_travel_dns, "Ask using: ") %>
+                    <%= label_tag(:e_travel_dns, "DNS server") %>
                     <%= select_tag(:e_travel_dns, options_for_select(@dns_server_list, params[:e_travel_dns].presence || @dns_server_list.first), :class => 'form-control') %>
                 </div>
 
                 <div class="form-group">
-                    <%= label_tag(:e_travel_host, "Host: ") %>
+                    <%= label_tag(:e_travel_host, "Enter a host name for forward DNS lookup") %>
                     <%= text_field_tag(:e_travel_host, nil, :class => 'form-control') %>
                 </div>
 
